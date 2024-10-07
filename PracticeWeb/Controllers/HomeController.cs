@@ -17,6 +17,7 @@ namespace PracticeWeb.Controllers
             ViewBag.message = name + " how are u?";
             ViewBag.number = num;
             return View();
+            //check
         }
 
         
