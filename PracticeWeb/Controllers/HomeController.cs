@@ -12,7 +12,7 @@ namespace PracticeWeb.Controllers
         {
             return View();
         }
-        public  ActionResult  Caste(string name, int num)
+        public  ActionResult  Test(string name, int num)
         {
             ViewBag.message = name + " how are u?";
             ViewBag.number = num;
