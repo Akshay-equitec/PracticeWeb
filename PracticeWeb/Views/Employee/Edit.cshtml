@@ -1,0 +1,43 @@
+﻿
+
+@{
+    Layout = null;
+}
+@model PracticeWeb.Models.Employee
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+
+    <div>
+
+      
+        <h2>Edit Employee</h2>
+
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(m => m.Id)
+
+            <div>
+                @Html.LabelFor(m => m.Name)
+                @Html.TextBoxFor(m => m.Name)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.Age)
+                @Html.TextBoxFor(m => m.Age)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.Department)
+                @Html.TextBoxFor(m => m.Department)
+            </div>
+            <button type="submit">Save</button>
+        }
+    </div>
+</body>
+</html>

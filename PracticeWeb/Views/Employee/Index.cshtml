@@ -1,0 +1,65 @@
+﻿
+
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+
+        @model IEnumerable<PracticeWeb.Models.Employee>
+        <h2>Employee List</h2>
+        <a href="Create">CREATE</a>
+        <form method="get" action="@Url.Action("Index")">
+            <input type="text" name="searchTerm" value="@ViewBag.SearchTerm" placeholder="Search by Name" />
+            <button type="submit">Search</button>
+        </form>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Department</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var employee in Model)
+                {
+                    <tr>
+                        <td>@employee.Id</td>
+                        <td>@employee.Name</td>
+                        <td>@employee.Age</td>
+                        <td>@employee.Department</td>
+                        <td>
+                            <a href="@Url.Action("Edit", "Employee", new { id = employee.Id })">Edit</a> |
+                            <a href="@Url.Action("Delete", "Employee", new { id = employee.Id })">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div>
+            @if (ViewBag.PageNumber > 1)
+            {
+                <a href="@Url.Action("Index", new { searchTerm = ViewBag.SearchTerm, pageNumber = ViewBag.PageNumber - 1 })">Previous</a>
+            }
+            @if (ViewBag.PageNumber < ViewBag.TotalPages)
+            {
+                <a href="@Url.Action("Index", new { searchTerm = ViewBag.SearchTerm, pageNumber = ViewBag.PageNumber + 1 })">Next</a>
+            }
+        </div>
+    </div>
+</body>
+</html>
