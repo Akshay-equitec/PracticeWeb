@@ -1,0 +1,37 @@
+﻿
+@{
+    Layout = null;
+}
+@model PracticeWeb.Models.Employee
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+
+
+    <h2>Add Employee</h2>
+    <a href="Index">View the Data</a>
+
+    @using (Html.BeginForm())
+    {
+        <div>
+            @Html.LabelFor(m => m.Name)
+            @Html.TextBoxFor(m => m.Name)
+        </div>
+        <div>
+            @Html.LabelFor(m => m.Age)
+            @Html.TextBoxFor(m => m.Age)
+        </div>
+        <div>
+            @Html.LabelFor(m => m.Department)
+            @Html.TextBoxFor(m => m.Department)
+        </div>
+        <button type="submit">Save</button>
+    }
+
+</body>
+</html>
