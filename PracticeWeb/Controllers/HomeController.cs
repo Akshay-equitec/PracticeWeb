@@ -12,13 +12,8 @@ namespace PracticeWeb.Controllers
         {
             return View();
         }
-        public  ActionResult  Test(string name, int num)
-        {
-            ViewBag.message = name + " how are u?";
-            ViewBag.number = num;
-            return View();
-            //check
-        }
+       
+       
 
         
     }
