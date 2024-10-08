@@ -1,28 +1,119 @@
-﻿
-
-@{
+﻿@{
     Layout = null;
 }
 
-
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <title>Employee List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+            a:hover {
+                text-decoration: underline;
+            }
+
+        .search-form {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+            .search-form input[type="text"] {
+                padding: 10px;
+                width: 300px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+
+            .search-form button {
+                padding: 10px 20px;
+                background-color: #3498db;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+                .search-form button:hover {
+                    background-color: #2980b9;
+                }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .pagination {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+            .pagination a {
+                color: #3498db;
+                padding: 10px 20px;
+                text-decoration: none;
+                border: 1px solid #ddd;
+                margin: 0 5px;
+                border-radius: 5px;
+            }
+
+                .pagination a:hover {
+                    background-color: #ddd;
+                }
+    </style>
 </head>
 <body>
-    <div>
-
+    <div class="container">
         @model IEnumerable<PracticeWeb.Models.Employee>
         <h2>Employee List</h2>
-        <a href="Create">CREATE</a>
-        <form method="get" action="@Url.Action("Index")">
-            <input type="text" name="searchTerm" value="@ViewBag.SearchTerm" placeholder="Search by Name" />
-            <button type="submit">Search</button>
-        </form>
-
+        <div class="search-form">
+            <form method="get" action="@Url.Action("Index")">
+                <input type="text" name="searchTerm" value="@ViewBag.SearchTerm" placeholder="Search by Name" />
+                <button type="submit">Search</button>
+            </form>
+        </div>
         <table class="table">
             <thead>
                 <tr>
@@ -49,8 +140,7 @@
                 }
             </tbody>
         </table>
-
-        <div>
+        <div class="pagination">
             @if (ViewBag.PageNumber > 1)
             {
                 <a href="@Url.Action("Index", new { searchTerm = ViewBag.SearchTerm, pageNumber = ViewBag.PageNumber - 1 })">Previous</a>
