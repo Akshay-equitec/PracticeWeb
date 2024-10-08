@@ -10,18 +10,13 @@ namespace PracticeWeb.DAL_DataAccessLayer_
     {
         public readonly string _ConnectionString;
 
-
-
         public DapperContext()
         {
             _ConnectionString = ConfigurationManager.ConnectionStrings["EmployeeDBConnection"].ConnectionString;
         }
 
-
-
         public IDbConnection CreateConnection()
         {
-
             return new SqlConnection(_ConnectionString);
         }
 
